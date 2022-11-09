@@ -1,4 +1,5 @@
 import json
+import os
 
 import more_itertools
 from jinja2 import Environment, FileSystemLoader, select_autoescape
@@ -10,22 +11,31 @@ def rebuild_site():
     with open(catalog_path, 'r', encoding="UTF-8") as catalog_file:
         books_catalog = json.load(catalog_file)
 
-    book_cards_number = len(books_catalog)
-    columns_number = 2
-    chunk_number = book_cards_number // columns_number
-    chunk_number += book_cards_number % columns_number
-    books_columns = more_itertools.chunked(books_catalog, chunk_number)
+    for book_card in books_catalog:
+        book_card['img_src'] = ''.join(['.', book_card['img_src']])
 
     env = Environment(
         loader=FileSystemLoader('.'),
         autoescape=select_autoescape(['html', 'xml'])
     )
 
-    template = env.get_template('template.html')
-    rendered_page = template.render(books_columns=books_columns)
+    pages_path = 'pages'
+    os.makedirs(pages_path, exist_ok=True)
+    books_per_page = 10
+    pages = more_itertools.chunked(books_catalog, books_per_page)
+    columns_number = 2
+    for page_number, page in enumerate(pages, start=1):
+        book_cards_number = len(page)
+        chunk_number = book_cards_number // columns_number
+        chunk_number += book_cards_number % columns_number
+        books_columns = more_itertools.chunked(page, chunk_number)
+        template = env.get_template('template.html')
+        rendered_page = template.render(books_columns=books_columns)
 
-    with open('index.html', 'w', encoding="utf8") as file:
-        file.write(rendered_page)
+        file_name = f'index{page_number}.html'
+        file_path = os.path.join(pages_path, file_name)
+        with open(file_path, 'w', encoding="utf8") as file:
+            file.write(rendered_page)
 
 
 def main():

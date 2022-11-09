@@ -5,6 +5,7 @@ tmp*.*
 *.code-workspace
 books/
 images/
+pages/
 books_catalog.json
 index.html
 
