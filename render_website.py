@@ -1,4 +1,5 @@
 import json
+import math
 import os
 
 import more_itertools
@@ -21,16 +22,19 @@ def rebuild_site():
 
     pages_path = 'pages'
     os.makedirs(pages_path, exist_ok=True)
-    books_per_page = 10
+    books_per_page = 15
     pages = more_itertools.chunked(books_catalog, books_per_page)
+    pages_number = math.ceil(len(books_catalog) / books_per_page)
     columns_number = 2
     for page_number, page in enumerate(pages, start=1):
-        book_cards_number = len(page)
-        chunk_number = book_cards_number // columns_number
-        chunk_number += book_cards_number % columns_number
+        chunk_number = math.ceil(len(page) / columns_number)
         books_columns = more_itertools.chunked(page, chunk_number)
         template = env.get_template('template.html')
-        rendered_page = template.render(books_columns=books_columns)
+        rendered_page = template.render(
+            books_columns=books_columns,
+            page_number=page_number,
+            pages_number=pages_number,
+        )
 
         file_name = f'index{page_number}.html'
         file_path = os.path.join(pages_path, file_name)

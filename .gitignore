@@ -7,7 +7,6 @@ books/
 images/
 pages/
 books_catalog.json
-index.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
