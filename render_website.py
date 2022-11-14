@@ -1,3 +1,5 @@
+import argparse
+import functools
 import json
 import math
 import os
@@ -7,7 +9,21 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from livereload import Server
 
 
-def rebuild_site():
+def create_args_parser():
+    description = 'The program creates a website'
+    parser = argparse.ArgumentParser(description=description)
+
+    parser.add_argument('--books_per_page',
+                        metavar='[books per page]',
+                        help='The number of books on a page, 15 by default',
+                        default=15,
+                        type=int,
+                        )
+
+    return parser
+
+
+def rebuild_site(books_per_page):
     catalog_path = 'books_catalog.json'
     with open(catalog_path, 'r', encoding="UTF-8") as catalog_file:
         books_catalog = json.load(catalog_file)
@@ -19,7 +35,6 @@ def rebuild_site():
 
     pages_path = 'pages'
     os.makedirs(pages_path, exist_ok=True)
-    books_per_page = 15
     pages = more_itertools.chunked(books_catalog, books_per_page)
     pages_number = math.ceil(len(books_catalog) / books_per_page)
     columns_number = 2
@@ -40,9 +55,15 @@ def rebuild_site():
 
 
 def main():
-    rebuild_site()
+    args_parser = create_args_parser()
+    args = args_parser.parse_args()
+    rebuild_site_handler = functools.partial(
+        rebuild_site,
+        books_per_page=args.books_per_page,
+    )
+    rebuild_site_handler()
     server = Server()
-    server.watch('./template.html', rebuild_site)
+    server.watch('./template.html', rebuild_site_handler)
     server.serve(root='.')
 
 
