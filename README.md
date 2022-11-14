@@ -66,6 +66,8 @@ python render_website.py -h
 
 - Go to [the offline version of the website](http://127.0.0.1:5500/).
 
+![site screenshot](./site_screenshot.png)
+
 ## Project goals
 
 The project was created for educational purposes.
