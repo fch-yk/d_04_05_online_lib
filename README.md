@@ -64,7 +64,7 @@ The number of books per page by default is 15.
 python render_website.py -h
 ```
 
-- You can go to [an offline version of the website](http://127.0.0.1:5500/);
+- Go to [the offline version of the website](http://127.0.0.1:5500/).
 
 ## Project goals
 
