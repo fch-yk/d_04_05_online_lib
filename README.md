@@ -66,6 +66,8 @@ python render_website.py -h
 
 - You can also go to an [example of the website on GitHub Pages](https://yefimkorshever.github.io/d_04_05_site/).
 
+- Furthermore, you can find the instruction how to get an offline example of the website [here](https://github.com/yefimkorshever/d_04_05_site).
+
 ## Project goals
 
 The project was created for educational purposes.
