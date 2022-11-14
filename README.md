@@ -1,6 +1,8 @@
 # Library
 
-The program parses [tululu.org](https://tululu.org/) library and creates its own offline website.
+- The program parses [tululu.org](https://tululu.org/) library and creates its own offline website.
+- You can also go to [an example of the website on GitHub Pages](https://yefimkorshever.github.io/d_04_05_site/).
+- Furthermore, you can find the instruction how to get an offline example of the website [here](https://github.com/yefimkorshever/d_04_05_site).
 
 ## Prerequisites
 
@@ -62,11 +64,7 @@ The number of books per page by default is 15.
 python render_website.py -h
 ```
 
-- You can go to an [offline version of the website](http://127.0.0.1:5500/);
-
-- You can also go to an [example of the website on GitHub Pages](https://yefimkorshever.github.io/d_04_05_site/).
-
-- Furthermore, you can find the instruction how to get an offline example of the website [here](https://github.com/yefimkorshever/d_04_05_site).
+- You can go to [an offline version of the website](http://127.0.0.1:5500/);
 
 ## Project goals
 
