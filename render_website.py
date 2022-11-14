@@ -12,9 +12,6 @@ def rebuild_site():
     with open(catalog_path, 'r', encoding="UTF-8") as catalog_file:
         books_catalog = json.load(catalog_file)
 
-    for book_card in books_catalog:
-        book_card['img_src'] = ''.join(['.', book_card['img_src']])
-
     env = Environment(
         loader=FileSystemLoader('.'),
         autoescape=select_autoescape(['html', 'xml'])
