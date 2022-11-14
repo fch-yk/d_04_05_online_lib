@@ -8,8 +8,9 @@ Python 3.10 or higher required.
 
 ## Installing
 
-- Download the project files
-- Run:
+- Download the project files.
+- It is recommended to use [venv](https://docs.python.org/3/library/venv.html?highlight=venv#module-venv) for project isolation.
+- Set up packages:
 
 ```bash
 pip install -r requirements.txt
@@ -61,9 +62,9 @@ The number of books per page by default is 15.
 python send-minechat.py -h
 ```
 
-- You can go to an [example of the working site](https://yefimkorshever.github.io/d_04_05_site/).
+- You can go to an [offline version of the website](http://127.0.0.1:5500/);
 
-
+- You can also go to an [example of the website on GitHub Pages](https://yefimkorshever.github.io/d_04_05_site/).
 
 ## Project goals
 
