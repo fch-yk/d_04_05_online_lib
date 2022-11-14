@@ -59,7 +59,7 @@ The number of books per page by default is 15.
 - To find out more, run:
 
 ```bash
-python send-minechat.py -h
+python render_website.py -h
 ```
 
 - You can go to an [offline version of the website](http://127.0.0.1:5500/);
