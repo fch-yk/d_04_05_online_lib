@@ -2,7 +2,7 @@
 
 - The program parses [tululu.org](https://tululu.org/) library and creates its own offline website.
 - You can also go to [an example of the website on GitHub Pages](https://yefimkorshever.github.io/d_04_05_site/).
-- Furthermore, you can find the instruction how to get an offline example of the website [here](https://github.com/yefimkorshever/d_04_05_site).
+- Furthermore, you can find the instruction how to get an offline example of the website [here](https://github.com/fch-yk/d_04_05_site).
 
 ## Prerequisites
 
